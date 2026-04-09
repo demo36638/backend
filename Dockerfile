@@ -30,6 +30,9 @@ RUN apk add --no-cache openssl
 
 WORKDIR /app
 
+# Copy root package files to enable workspace support
+COPY package*.json ./
+
 # Copy built backend
 COPY --from=builder /app/backend/dist ./backend/dist
 COPY --from=builder /app/backend/node_modules ./backend/node_modules
